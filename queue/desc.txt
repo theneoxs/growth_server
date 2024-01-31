@@ -1,0 +1,100 @@
+queue/select_all_schemes.sql - запрос на получение всех схем, доступных для прохождения, с прогрессом по пользователю
+- user_id = GUID пользователя
+
+queue/select_all_people_with_role_in_program.sql - запрос на получение всех пользователей определенной роли, относящихся к схеме
+- program_id = ID схемы
+- role_id = ID роли (3 - админ, 2 - модератор, 1 - обычный)
+
+queue/select_all_block_in_schemes.sql - запрос на получение всех блоков со связями определенной схемы
+- user_id = GUID пользователя
+- program_id = ID схемы
+
+queue/select_user_data.sql - запрос на получение информации по пользователям
+- user_id = GUID пользователя
+
+queue/set_favorite_schema.sql - запрос на установку избранности схемы
+- user_id = GUID пользователя
+- program_id = ID схемы
+- is_favorite = флаг избранности схемы
+
+
+queue/set_favorite_block.sql - запрос на установку избранности блока
+- user_id = GUID пользователя
+- block_id = ID блока
+- is_favorite = флаг избранности блока
+
+queue/set_block_status.sql - запрос на установку статуса блока
+- user_id = GUID пользователя
+- block_id = ID блока
+- block_status = статус блока
+
+queue/create_scheme.sql - запрос на создание новой схемы
+- id = ID схемы
+- name = название схемы
+- info = основное описание схемы
+- tag = мини-подпись схемы
+- is_public = флаг публичности схемы
+- status = статус схемы
+
+queue/create_blocks.sql - запрос на создание нового блока
+- data = список блоков на добавление. Формат: ('name', type, 'desc', 'level')
+
+queue/create_connect_block_to_block.sql - запрос на связь двух блоков между собой
+- data = список связей блоков с блоками. Формат: (mother_id, child_id)
+
+queue/create_connect_blocks_to_program.sql - запрос на связь блоков со схемой
+- data = список связей блоков со схемами. Формат: (program_id, block_id)
+
+queue/create_user_to_program.sql - запрос на выдачу прав для конкретного пользователя
+- data = список связей схем с пользователями. Формат: (program_id, user_id, role_id)
+
+queue/create_connect_block_to_user.sql - запрос на выдачу прав для конкретного пользователя
+- data = список связей схем с пользователями. Формат: (block_ud, user_id)
+
+queue/select_all_favorite_block.sql - запрос на получение информации по избранным блокам
+- user_id = GUID пользователя
+
+queue/select_all_favorite_scheme.sql - запрос на получение информации по избранным схемам
+- user_id = GUID пользователя
+
+queue/select_all_complete_scheme.sql - запрос на получение информации по завершенным схемам
+- user_id = GUID пользователя
+
+queue/get_user_by_login.sql - запрос на поручение пользователя по его логину
+- login = логин пользователя
+
+queue/create_user.sql - запрос на создание пользователя
+- id = GUID пользователя
+- name = имя пользователя
+- surname = фамилия пользователя
+- position = должность пользователя
+- role_id = уровень доступа пользователя
+- branch_id = ID филиала
+
+queue/create_account.sql - запрос на создание аккаунта для пользователя
+- user_id = GUID пользователя
+- login = логин пользователя
+- password = пароль пользователя
+
+queue/select_all_user_complete_scheme.sql - запрос на получение всех пользователей, работающих со схемой
+- prog_id = ID схемы на получение
+
+queue/select_scheme.sql - запрос на получение данных о схеме по ID
+- id = ID схемы на получение
+
+queue/update_blocks.sql - запрос на обновление содержимого блоков
+- data = список блоков на изменение. Формат: (id, 'name', type, 'desc', 'level')
+
+queue/delete_connect_blocks.sql - запрос на удаление всех связей в схеме между блоками
+- prog_id = ID схемы
+
+queue/update_scheme.sql - запрос на обновление данных схемы
+- id = ID схемы
+- name = название схемы
+- info = основное описание схемы
+- tag = мини-подпись схемы
+- is_public = флаг публичности схемы
+- status = статус схемы
+
+queue/update_user.sql - запрос на обновление данных пользователя
+- data = набор данных для обновления пользователей
